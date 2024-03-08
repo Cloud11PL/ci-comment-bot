@@ -1,4 +1,4 @@
-name: Slash Command Dispatch
+name: Chat Ops BOT
 on:
   issue_comment:
     types: [created, edited]
@@ -6,9 +6,17 @@ jobs:
   slashCommandDispatch:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo apps
+      - name: Print event 🖨️
         run: |
-          echo "${{ toJson(github.event) }}"
+          echo off
+          echo '${{ toJson(github.event) }}'
+
+      # - name: Find the PR branch name 🔎
+      #   uses: bahmutov/get-branch-name-by-pr@v1
+      #   id: pr
+      #   with:
+      #     repo-token: ${{ secrets.PERSONAL_TOKEN }}
+      #     pr-id: ${{ github.event.issue.number }}
 
       - name: Slash Command Dispatch
         uses: peter-evans/slash-command-dispatch@v4
@@ -18,4 +26,7 @@ jobs:
             e2e
           issue-type: pull-request
           dispatch-type: workflow
-          apps: ${{ github.event.client_payload.slash_command.args.all }}
+          static-args: |
+            repository=${{ github.repository }}
+            comment-id=${{ github.event.comment.id }}
+            ref=${{ steps.pr.outputs.branch }}
