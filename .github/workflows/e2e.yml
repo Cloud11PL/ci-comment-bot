@@ -1,0 +1,32 @@
+name: End-to-end tests
+
+on:
+  repository_dispatch:
+    types: [run-e2e]
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run e2e tests
+        run: |
+          ARGS="${{ github.event.client_payload.slash_command.args.all }}"
+          if [ -z "$ARGS" ]; then
+            npx turbo e2e
+          else
+            for APP in $ARGS; do
+              npx turbo e2e --filter=$APP
+            done
+          fi

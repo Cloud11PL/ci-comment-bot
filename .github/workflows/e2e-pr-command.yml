@@ -13,16 +13,27 @@ jobs:
           reaction-token: ${{ secrets.PAT }}
           repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
           comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
-          reactions: +1
+          reactions: eyes
       - name: Print E2E variables
         run: |
           echo ${{ github.event.client_payload.slash_command.command }}
           echo ${{ github.event.client_payload.slash_command.args.all }}
-        # uses: peter-evans/slash-command-dispatch@v4
-        # with:
-        #   token: ${{ secrets.PAT }}
-        #   commands: e2e
-        #   dispatch-type: workflow
-        #   static_args: |
-        #     "repository=${{ github.repository }}"
-        #     "comment-id=${{ github.event.comment.id }}"
+
+      - name: Run e2e
+        uses: peter-evans/slash-command-dispatch@v4
+        with:
+          token: ${{ secrets.PAT }}
+          commands: e2e
+          dispatch-type: workflow
+          static_args: |
+            "repository=${{ github.repository }}"
+            "comment-id=${{ github.event.comment.id }}"
+
+      - name: Complete with reaction
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          token: ${{ secrets.PAT }}
+          reaction-token: ${{ secrets.PAT }}
+          repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
+          comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
+          reactions: hooray
