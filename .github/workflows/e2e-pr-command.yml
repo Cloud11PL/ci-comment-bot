@@ -1,7 +1,7 @@
-name: e2e-pr-command
+name: e2e-command
 on:
   repository_dispatch:
-    types: [e2e-pr-command]
+    types: [e2e-command]
 jobs:
   e2ePR:
     runs-on: ubuntu-latest
