@@ -10,7 +10,9 @@ on:
         required: true
 jobs:
   showParams:
-    - name: Output command and arguments
-      run: |
-        echo ${{ github.event.client_payload.slash_command.command }}
-        echo ${{ github.event.client_payload.slash_command.args.all }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output command and arguments
+        run: |
+          echo ${{ github.event.client_payload.slash_command.command }}
+          echo ${{ github.event.client_payload.slash_command.args.all }}
