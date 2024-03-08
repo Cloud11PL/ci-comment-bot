@@ -6,7 +6,7 @@ jobs:
   helloWorld:
     runs-on: ubuntu-latest
     steps:
-      # Checkout the pull request branch
+      # Checkout the pull request branch xd
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.PAT }}
