@@ -32,13 +32,17 @@ jobs:
           echo "Apps: ${{ github.event.client_payload.slash_command }}"
           echo "Apps: ${{ github.event.client_payload.slash_command.args.all }}"
 
-      - name: Run e2e tests
+      - name: Extract app names and run e2e tests
         run: |
-          ARGS="${{ github.event.client_payload.slash_command.args.all }}"
-          if [ -z "$ARGS" ]; then
-            npx turbo e2e
-          else
-            for APP in $ARGS; do
-              npx turbo e2e --filter=$APP
-            done
+          COMMENT="${{ github.event.comment.body }}"
+          PREFIX="/e2e "
+          if [[ "$COMMENT" == $PREFIX* ]]; then
+            ARGS=${COMMENT#$PREFIX}
+            if [ -z "$ARGS" ]; then
+              npx turbo e2e
+            else
+              for APP in $ARGS; do
+                npx turbo e2e --filter=$APP
+              done
+            fi
           fi
