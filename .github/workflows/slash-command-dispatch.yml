@@ -14,3 +14,4 @@ jobs:
             e2e
           issue-type: pull-request
           dispatch-type: workflow
+          apps: ${{ github.event.client_payload.slash_command.args.all }}
