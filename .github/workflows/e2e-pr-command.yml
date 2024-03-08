@@ -26,9 +26,9 @@ jobs:
           commands: e2e
           dispatch-type: workflow
           issue-type: pull-request
-          static_args: |
-            "repository=${{ github.repository }}"
-            "comment-id=${{ github.event.comment.id }}"
+          static-args: |
+            repository=${{ github.repository }}
+            comment-id=${{ github.event.comment.id }}
 
       - name: Complete with reaction
         uses: peter-evans/create-or-update-comment@v4

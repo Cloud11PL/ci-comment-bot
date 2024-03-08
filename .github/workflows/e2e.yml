@@ -1,8 +1,14 @@
 name: End-to-end tests
 
 on:
-  repository_dispatch:
-    types: [run-e2e]
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: "The repository from which the slash command was dispatched"
+        required: true
+      comment-id:
+        description: "The comment-id of the slash command"
+        required: true
 
 jobs:
   e2e:
