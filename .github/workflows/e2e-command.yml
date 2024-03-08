@@ -54,9 +54,6 @@ jobs:
           PREFIX="/e2e "          
           npx turbo e2e --filter=$APP
 
-  e2ePRFinish:
-    runs-on: ubuntu-latest
-    steps:
       - name: Add reaction
         uses: peter-evans/create-or-update-comment@v4
         with:
