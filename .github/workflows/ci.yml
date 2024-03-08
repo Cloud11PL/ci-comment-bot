@@ -31,5 +31,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build
-        run: pnpm build
+      - name: E2E
+        run: pnpm e2e
