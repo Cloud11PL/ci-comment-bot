@@ -27,6 +27,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Echo apps
+        run: |
+          echo "Apps: ${{ github.event.client_payload.slash_command.args.named.apps }}"
+          echo "Apps: ${{ github.event.client_payload.slash_command.args.all }}"
+
       - name: Run e2e tests
         run: |
           ARGS="${{ github.event.client_payload.slash_command.args.all }}"
