@@ -29,7 +29,7 @@ jobs:
 
       - name: Echo apps
         run: |
-          echo "Apps: ${{ github.event.client_payload.slash_command.args.named.apps }}"
+          echo "Apps: ${{ github.event.client_payload.slash_command }}"
           echo "Apps: ${{ github.event.client_payload.slash_command.args.all }}"
 
       - name: Run e2e tests

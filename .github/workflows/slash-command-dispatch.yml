@@ -8,9 +8,7 @@ jobs:
     steps:
       - name: Echo apps
         run: |
-          echo "Apps: ${{ github.event.client_payload.slash_command.args.named.apps }}"
-          echo "Apps: ${{ github.event.client_payload.slash_command.args.all }}"
-          echo "${{ toJson(github.event.client_payload.slash_command) }}"
+          echo "${{ toJson(github.event) }}"
 
       - name: Slash Command Dispatch
         uses: peter-evans/slash-command-dispatch@v4
