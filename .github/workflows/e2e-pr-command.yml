@@ -3,7 +3,7 @@ on:
   repository_dispatch:
     types: [e2e-command]
 jobs:
-  slashCommandDispatch:
+  e2ePR:
     runs-on: ubuntu-latest
     steps:
       - name: Slash Command Dispatch
