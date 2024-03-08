@@ -36,7 +36,6 @@ jobs:
                 "command": "fix-pr",
                 "permission": "write",
                 "issue_type": "pull-request",
-                "repository": "Cloud11PL/ci-comment-bot"
               }
             ]
 
