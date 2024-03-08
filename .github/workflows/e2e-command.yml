@@ -2,7 +2,7 @@ name: End-to-end tests
 
 on:
   repository_dispatch:
-    types: [run-e2e]
+    types: [e2e-command]
 
 permissions:
   contents: read
