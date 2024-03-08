@@ -1,15 +1,22 @@
 name: End-to-end tests
 
 on:
-  workflow_dispatch:
-    input:
-      apps:
+  repository_dispatch:
     types: [run-e2e]
+
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
   e2e:
     runs-on: ubuntu-latest
     steps:
+      - name: Print event 🖨️
+        run: |
+          echo off
+          echo '${{ toJson(github.event.client_payload.slash_command) }}'
+
       - name: Checkout code
         uses: actions/checkout@v4
 
