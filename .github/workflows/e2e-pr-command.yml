@@ -13,13 +13,22 @@ jobs:
           reaction-token: ${{ secrets.PAT }}
           repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
           comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
-          reactions: hooray
-      - name: Slash Command Dispatch
-        uses: peter-evans/slash-command-dispatch@v4
-        with:
-          token: ${{ secrets.PAT }}
-          commands: e2e
-          dispatch-type: workflow
-          static_args: |
-            "repository=${{ github.repository }}"
-            "comment-id=${{ github.event.comment.id }}"
+          reactions: thumbs-up
+      - name: Print E2E variables
+        run: |
+          echo ${{ github.event.client_payload.slash_command.command }}
+          echo ${{ github.event.client_payload.slash_command.args.all }}
+          echo ${{ github.event.client_payload.slash_command.args.unnamed.all }}
+          echo ${{ github.event.client_payload.slash_command.args.unnamed.arg1 }}
+          echo ${{ github.event.client_payload.slash_command.args.unnamed.arg2 }}
+          echo ${{ github.event.client_payload.slash_command.args.named.region }}
+          echo ${{ github.event.client_payload.slash_command.args.named.branch }}
+          echo ${{ github.event.client_payload.slash_command.args.named.reason }}
+        # uses: peter-evans/slash-command-dispatch@v4
+        # with:
+        #   token: ${{ secrets.PAT }}
+        #   commands: e2e
+        #   dispatch-type: workflow
+        #   static_args: |
+        #     "repository=${{ github.repository }}"
+        #     "comment-id=${{ github.event.comment.id }}"
