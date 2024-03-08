@@ -13,3 +13,4 @@ jobs:
           commands: |
             e2e
           issue-type: pull-request
+          dispatch-type: repository
