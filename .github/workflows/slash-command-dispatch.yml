@@ -12,4 +12,4 @@ jobs:
           token: ${{ secrets.PAT }}
           reaction-token: ${{ secrets.PAT }}
           commands: example
-          repository: Cloud11PL/slash-command-processor
+          repository: Cloud11PL/ci-comment-bot
