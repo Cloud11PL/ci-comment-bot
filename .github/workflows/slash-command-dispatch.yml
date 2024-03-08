@@ -14,15 +14,15 @@ jobs:
       - uses: actions/checkout@v4
 
       # Basic configuration
-      - name: Slash Command Dispatch
-        uses: ./
-        with:
-          token: ${{ secrets.PAT }}
-          commands: |
-            hello-world-local
-            ping-local
-          permission: none
-          issue-type: issue
+      # - name: Slash Command Dispatch
+      #   uses: ./
+      #   with:
+      #     token: ${{ secrets.PAT }}
+      #     commands: |
+      #       hello-world-local
+      #       ping-local
+      #     permission: none
+      #     issue-type: issue
 
       # Advanced JSON configuration
       - name: Slash Command Dispatch (JSON)
@@ -34,7 +34,7 @@ jobs:
             [
               {
                 "command": "fix-pr",
-                "permission": "none",
+                "permission": "write",
                 "issue_type": "pull-request",
                 "repository": "Cloud11PL/ci-comment-bot"
               }
