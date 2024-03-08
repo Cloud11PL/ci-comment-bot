@@ -1,7 +1,9 @@
 name: End-to-end tests
 
 on:
-  repository_dispatch:
+  workflow_dispatch:
+    input:
+      apps:
     types: [run-e2e]
 
 jobs:
