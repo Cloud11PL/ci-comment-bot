@@ -10,7 +10,7 @@ jobs:
         run: |
           echo "Apps: ${{ github.event.client_payload.slash_command.args.named.apps }}"
           echo "Apps: ${{ github.event.client_payload.slash_command.args.all }}"
-          echo "${{ toJson(github.event.client_payload) }}"
+          echo "${{ toJson(github.event.client_payload.slash_command) }}"
 
       - name: Slash Command Dispatch
         uses: peter-evans/slash-command-dispatch@v4
