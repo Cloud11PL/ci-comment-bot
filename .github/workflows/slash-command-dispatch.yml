@@ -24,8 +24,9 @@ jobs:
           token: ${{ secrets.PAT }}
           commands: |
             e2e
-          issue-type: pull-request
-          dispatch-type: workflow
+          # issue-type: pull-request
+          # dispatch-type: workflow
+          permission: none
           static-args: |
             repository=${{ github.repository }}
             comment-id=${{ github.event.comment.id }}
