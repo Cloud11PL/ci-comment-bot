@@ -19,4 +19,4 @@ jobs:
           token: ${{ secrets.PAT }} # This action needs a personal access token in order to dispatch
           reactions: false # By default, this action will add reactions to the slash command comment; this turns those off
           issue-type: pull-request # We only want to look for slash commands in pull requests, not other issues
-          commands: deploy, teardown # The slash commands we look for: /deploy and /teardown
+          commands: ci # The slash commands we look for: /deploy and /teardown
